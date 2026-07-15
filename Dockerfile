@@ -29,4 +29,4 @@ RUN npm run build --workspace=${APP_NAME}
 EXPOSE 3000
 
 # Start the specific application on port 3000
-CMD sh -c "if [ \"$APP_NAME\" = \"main_web\" ]; then cd main_web && npx prisma db push && cd ..; fi && npm run start --workspace=${APP_NAME} -- -p 3000"
+CMD sh -c "if [ \"$APP_NAME\" = \"main_web\" ]; then cd main_web && npx prisma db push && node prisma/seed.js && cd ..; fi && npm run start --workspace=${APP_NAME} -- -p 3000"
