@@ -11,7 +11,7 @@ ARG APP_NAME=main_web
 ENV APP_NAME=${APP_NAME}
 
 # Force completely fresh layer exports to bypass containerd lock on the host
-ADD "https://worldtimeapi.org/api/timezone/Etc/UTC" /tmp/bustcache
+RUN echo "Cache bust: 5" > /tmp/bustcache
 
 # Copy root files
 COPY package.json package-lock.json* ./
