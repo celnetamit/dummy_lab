@@ -2,6 +2,11 @@
   "name": "dummy-lab-monorepo",
   "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "build": "npm run build --workspace=main_web",
+    "start": "npm run start --workspace=main_web",
+    "dev": "npm run dev --workspace=main_web"
+  },
   "workspaces": [
     "main_web",
     "project_1",
