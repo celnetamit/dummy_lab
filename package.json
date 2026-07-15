@@ -1,0 +1,11 @@
+{
+  "name": "dummy-lab-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "main_web",
+    "project_1",
+    "project_2",
+    "project_3"
+  ]
+}
