@@ -10,22 +10,24 @@ export async function middleware(req) {
     return NextResponse.next();
   }
 
+  const MAIN_HUB_URL = process.env.MAIN_HUB_URL || "http://localhost:5173";
+
   if (!token) {
-    return NextResponse.redirect(new URL("http://localhost:5173/login"));
+    return NextResponse.redirect(new URL(`${MAIN_HUB_URL}/login`));
   }
 
   try {
-    const res = await fetch(`http://localhost:5173/api/subscriptions?username=${token.name}`);
+    const res = await fetch(`${MAIN_HUB_URL}/api/subscriptions?username=${token.name}`);
     if (!res.ok) {
-      return NextResponse.redirect(new URL("http://localhost:5173/?error=api_error"));
+      return NextResponse.redirect(new URL(`${MAIN_HUB_URL}/?error=api_error`));
     }
     const subscriptions = await res.json();
     const hasAccess = subscriptions.some(sub => sub.status === "active");
     if (!hasAccess && token.role !== "admin") {
-      return NextResponse.redirect(new URL("http://localhost:5173/?error=unauthorized"));
+      return NextResponse.redirect(new URL(`${MAIN_HUB_URL}/?error=unauthorized`));
     }
   } catch(error) {
-    return NextResponse.redirect(new URL("http://localhost:5173/?error=server_error"));
+    return NextResponse.redirect(new URL(`${MAIN_HUB_URL}/?error=server_error`));
   }
 
   return NextResponse.next();
