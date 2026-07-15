@@ -22,7 +22,7 @@ export async function middleware(req) {
       return NextResponse.redirect(new URL(`${MAIN_HUB_URL}/?error=api_error`));
     }
     const subscriptions = await res.json();
-    const hasAccess = subscriptions.some(sub => sub.status === "active");
+    const hasAccess = subscriptions.some(sub => sub.status === "active" && sub.productId === "project_3");
     if (!hasAccess && token.role !== "admin") {
       return NextResponse.redirect(new URL(`${MAIN_HUB_URL}/?error=unauthorized`));
     }
