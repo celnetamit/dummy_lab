@@ -20,7 +20,7 @@ export function SubscribeButton({ username, productId, subStatus }) {
   const handleSubscribe = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:5173/api/subscriptions', {
+      const res = await fetch('/api/subscriptions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, productId })
@@ -34,7 +34,7 @@ export function SubscribeButton({ username, productId, subStatus }) {
   const handleUnsubscribe = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`http://localhost:5173/api/subscriptions?username=${username}&productId=${productId}`, {
+      const res = await fetch(`/api/subscriptions?username=${username}&productId=${productId}`, {
         method: 'DELETE',
       });
       if (res.ok) window.location.reload();

@@ -83,10 +83,9 @@ export default async function HubPage() {
                           <td style={{ padding: '8px' }}>
                             <form action={async () => {
                               "use server";
-                              await fetch(`http://localhost:5173/api/subscriptions`, {
-                                method: 'PUT',
-                                headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify({ id: sub.id, status: sub.status === 'active' ? 'revoked' : 'active' })
+                              await prisma.subscription.update({
+                                where: { id: sub.id },
+                                data: { status: sub.status === 'active' ? 'revoked' : 'active' }
                               })
                               redirect('/'); // refresh
                             }}>
@@ -116,42 +115,42 @@ export default async function HubPage() {
             <div className="product-card card-1" style={{ opacity: c1Status === 'active' ? 1 : 0.8 }}>
               <div className="product-icon">✓</div>
               <h2 className="product-title">Course: Master Productivity</h2>
-              <div style={{ fontSize: '0.8rem', color: '#3b82f6', marginBottom: '1rem', background: 'rgba(59, 130, 246, 0.1)', padding: '4px 8px', borderRadius: '4px', alignSelf: 'flex-start' }}>🔗 localhost:5174</div>
+              <div style={{ fontSize: '0.8rem', color: '#3b82f6', marginBottom: '1rem', background: 'rgba(59, 130, 246, 0.1)', padding: '4px 8px', borderRadius: '4px', alignSelf: 'flex-start' }}>🔗 course1.nanoschool.in</div>
               <p className="product-desc">Advanced task management logic and AI-driven prioritization architecture.</p>
               <div style={{ marginTop: '1rem', fontSize: '0.9rem', color: '#ccc' }}>
                 <p><strong>Timeline:</strong> 4 Weeks</p>
                 <p><strong>Benefits:</strong> Learn advanced workflow automation and team synchronization.</p>
               </div>
               <SubscribeButton username={session.user.name} productId="project_1" subStatus={c1Status} />
-              {c1Status === 'active' && <a href="http://localhost:5174" style={{ display: 'block', marginTop: '10px', color: '#3b82f6', textDecoration: 'underline', textAlign: 'center' }}>Go to Course</a>}
+              {c1Status === 'active' && <a href="https://course1.nanoschool.in" style={{ display: 'block', marginTop: '10px', color: '#3b82f6', textDecoration: 'underline', textAlign: 'center' }}>Go to Course</a>}
             </div>
             
             {/* COURSE 2 */}
             <div className="product-card card-2" style={{ opacity: c2Status === 'active' ? 1 : 0.8 }}>
               <div className="product-icon">✧</div>
               <h2 className="product-title">Course: AI Art Generation</h2>
-              <div style={{ fontSize: '0.8rem', color: '#8b5cf6', marginBottom: '1rem', background: 'rgba(139, 92, 246, 0.1)', padding: '4px 8px', borderRadius: '4px', alignSelf: 'flex-start' }}>🔗 localhost:5175</div>
+              <div style={{ fontSize: '0.8rem', color: '#8b5cf6', marginBottom: '1rem', background: 'rgba(139, 92, 246, 0.1)', padding: '4px 8px', borderRadius: '4px', alignSelf: 'flex-start' }}>🔗 course2.nanoschool.in</div>
               <p className="product-desc">Next-generation neural image generation and prompt engineering.</p>
               <div style={{ marginTop: '1rem', fontSize: '0.9rem', color: '#ccc' }}>
                 <p><strong>Timeline:</strong> 6 Weeks</p>
                 <p><strong>Benefits:</strong> Master Stable Diffusion, GANs, and generative prompt tuning.</p>
               </div>
               <SubscribeButton username={session.user.name} productId="project_2" subStatus={c2Status} />
-              {c2Status === 'active' && <a href="http://localhost:5175" style={{ display: 'block', marginTop: '10px', color: '#8b5cf6', textDecoration: 'underline', textAlign: 'center' }}>Go to Course</a>}
+              {c2Status === 'active' && <a href="https://course2.nanoschool.in" style={{ display: 'block', marginTop: '10px', color: '#8b5cf6', textDecoration: 'underline', textAlign: 'center' }}>Go to Course</a>}
             </div>
 
             {/* COURSE 3 */}
             <div className="product-card card-3" style={{ opacity: c3Status === 'active' ? 1 : 0.8 }}>
               <div className="product-icon">$</div>
               <h2 className="product-title">Course: Financial Engineering</h2>
-              <div style={{ fontSize: '0.8rem', color: '#10b981', marginBottom: '1rem', background: 'rgba(16, 185, 129, 0.1)', padding: '4px 8px', borderRadius: '4px', alignSelf: 'flex-start' }}>🔗 localhost:5176</div>
+              <div style={{ fontSize: '0.8rem', color: '#10b981', marginBottom: '1rem', background: 'rgba(16, 185, 129, 0.1)', padding: '4px 8px', borderRadius: '4px', alignSelf: 'flex-start' }}>🔗 course3.nanoschool.in</div>
               <p className="product-desc">Intelligent personal finance tracking and algorithmic wealth generation.</p>
               <div style={{ marginTop: '1rem', fontSize: '0.9rem', color: '#ccc' }}>
                 <p><strong>Timeline:</strong> 8 Weeks</p>
                 <p><strong>Benefits:</strong> Build automated trading bots and predictive market models.</p>
               </div>
               <SubscribeButton username={session.user.name} productId="project_3" subStatus={c3Status} />
-              {c3Status === 'active' && <a href="http://localhost:5176" style={{ display: 'block', marginTop: '10px', color: '#10b981', textDecoration: 'underline', textAlign: 'center' }}>Go to Course</a>}
+              {c3Status === 'active' && <a href="https://course3.nanoschool.in" style={{ display: 'block', marginTop: '10px', color: '#10b981', textDecoration: 'underline', textAlign: 'center' }}>Go to Course</a>}
             </div>
           </div>
         </>
