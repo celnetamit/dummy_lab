@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+:root { --primary: #10b981; --bg: #064e3b; --surface: #022c22; --text: #ecfdf5; }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+body { background: var(--bg); color: var(--text); min-height: 100vh; margin: 0; }
+.app-container { display: flex; min-height: 100vh; }
+.sidebar { width: 250px; background: var(--surface); padding: 2rem; display: flex; flex-direction: column; gap: 2rem; border-right: 1px solid rgba(16, 185, 129, 0.2); }
+.logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+.menu-item { padding: 10px 15px; border-radius: 8px; color: #a7f3d0; text-decoration: none; display: block; transition: 0.3s; }
+.menu-item:hover, .menu-item.active { background: rgba(16, 185, 129, 0.1); color: var(--text); }
+.main-content { flex: 1; padding: 3rem; }
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; }
+.balance-card { background: linear-gradient(135deg, var(--primary), #059669); padding: 2rem; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); margin-bottom: 2rem; }
+.balance-card h2 { font-weight: 300; font-size: 1.2rem; opacity: 0.9; margin: 0; }
+.amount { font-size: 3.5rem; font-weight: 700; margin: 10px 0; }
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.stat-box { background: var(--surface); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(16, 185, 129, 0.1); }
+.stat-box h3 { margin: 0; font-weight: 400; color: #a7f3d0; }
+.back-btn { text-decoration: none; color: var(--text); background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: 6px; display: inline-block; }
